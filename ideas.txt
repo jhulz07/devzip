@@ -1,0 +1,1 @@
+- Try to use Bootstrap to allow responsive layout and add columns to the file/folder list 
