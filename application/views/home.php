@@ -14,13 +14,14 @@
         } 
         $dir_x = -1;
         foreach ($selected_dir as $dir_node) {
-            if(1==1) { // TODO: add detection of folder here, we may don't like to display files.
+            if(is_object($dir_node)) { // TODO: add detection of folder here, we may don't like to display files.
             $dir_x++;
             ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a><br><?php   
+            } else {
+                ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a><br><?php   
             }
         }        
     ?>
-    
     <hr>
     <a href="<?php echo base_url(); ?>ctrl/compress">Compress</a>
 </body>

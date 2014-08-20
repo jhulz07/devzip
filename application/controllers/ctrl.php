@@ -8,12 +8,14 @@ class Ctrl extends CI_Controller {
         $this->load->helper("url");
         $this->load->library("session");
         $this->root_folder = 'c:' . DIRECTORY_SEPARATOR . 'xampp' . DIRECTORY_SEPARATOR . 'htdocs';
+        $this->foldersTreatedAs = 2; // 1 for no; 2 for yes; this allows us to detect whether an item is a file or a folder with sub-items
         
     }
     
     function Index() {
+        echo $this->foldersTreatedAs;
         $this->session->set_userdata('current_path', $this->root_folder);
-        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), 1); // 2 so that we can detect folders as arrays
+        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), $this->foldersTreatedAs); 
         $this->session->set_userdata('path_is_root', TRUE);
         $this->load->view('home', $data);   
     }
@@ -21,7 +23,7 @@ class Ctrl extends CI_Controller {
     function enter($msg) {
         $dir_array = directory_map($this->session->userdata('current_path'), 1);
         $this->session->set_userdata('current_path', $this->session->userdata('current_path') . DIRECTORY_SEPARATOR . $dir_array[$msg]);
-        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), 1); // 2 so that we can detect folders as arrays
+        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), $this->foldersTreatedAs); 
         $this->session->set_userdata('path_is_root', FALSE);
         $this->load->view('home', $data); 
     }
@@ -45,7 +47,7 @@ class Ctrl extends CI_Controller {
             $this->session->set_userdata('path_is_root', TRUE);
         }
         
-        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), 1); // 2 so that we can detect folders as arrays
+        $data['selected_dir'] = directory_map($this->session->userdata('current_path'), $this->foldersTreatedAs); 
         $this->load->view('home', $data); 
     }
     
