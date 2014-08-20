@@ -1,0 +1,44 @@
+What we will do is to display the directories and files based on the items clicked by the user.
+
+We need to find a way how can we track which is the active directory selected by the user.
+    Maybe we could have a function to display the selected folder or up on level of folder.
+        Maybe we could use sessions for this.
+        We might also choose a client form to do this.
+
+Problem....
+    Even if we can tract the previous folder, what if the scenario goes like this. 
+        The user enters one level of folder then decides to ge up one folder,
+            during that event (up one level) we have no way to track which is it's parent folder.
+            
+Suggestion...
+    Maybe we can aid the problem above by using array functions.
+    Or, it would be better that we have 2 parent histories?
+    
+    Ok maybe this is the best solution, instead of tracking the values of individual folders
+        clicked by the user, why don't we take the arguments in the URL and analyze it?
+            For example, we want to browse to "htdocs\experiments\devzip\" we should have a function
+            that was able to accept an array of arguments from the url, thus the example above should be
+            "localhost/experiments/devzip/enter/htdocs/experiments/devzip" 
+                where:
+                    $argument[0] = "htdocs";
+                    $argument[1] = "experiments";
+                    $argument[2] = "devzip";
+                where:
+                    we have a problem to append them in a loop to form: c:\xampp\htdocs\experiments\devzip
+                    
+                then for the function "up one level":
+                    we will take the current selected path then scan the string to remove the last folder on the row
+                    
+            ANOTHER PROBLEM: We can't rely on the array of strings provided by URL,
+                1st, it seems like we can't have an array type of argument in the controller function from the URL
+                2nd, we might encounter errors if there is a special character on the URL specially on other folders
+            THUS PROBABLY: WE ACCESS BY ARRAY INDEX
+            
+            ADD a function that will not allow the user to up one level on htdocs, as of now the up one level visibility is limited on root
+                we may try to filter the path and make sure that the starting characters starts at sequence c:\xampp\htdocs
+                
+            ADD a function that will not display C:\xampp\htdocs on the web page and treat that as a root already
+                    
+                    
+The next problem would be opening a file as folder. The first solution the I thought is to treat files with file extension as files
+    but in that case the system will also exclude directories with . on their names
