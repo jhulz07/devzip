@@ -1,1 +1,4 @@
-Wed 08/20/2014 - 16:20:02.63 
+- Function: detect which are folders and which are files.
+- CSS: icons depending on file type or if it is a folder.
+- CSS: add hover effects
+- OS: create a script that will accept a path parameter then do a zip operation based on path supplied by the PHP call.
