@@ -1,4 +1,6 @@
 - Function: detect which are folders and which are files.
+    - DONE on view, we can now apply folder and file icons accordingly.
+- Function: code to allow users execute zip or unzip command
 - CSS: icons depending on file type or if it is a folder.
 - CSS: add hover effects
 - OS: create a script that will accept a path parameter then do a zip operation based on path supplied by the PHP call.
