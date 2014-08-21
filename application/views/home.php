@@ -12,11 +12,11 @@
         if ($this->session->userdata('path_is_root')==FALSE) {
         ?><a href="<?php echo base_url(); ?>">.\ web_root</a><br><a href="<?php echo base_url(); ?>ctrl/up">.. up one level</a><br><br><?php
         } 
-        $dir_x = -1;
-        foreach ($selected_dir as $dir_node) {
-            if(is_object($dir_node)) { // TODO: add detection of folder here, we may don't like to display files.
+        $dir_x=-1;
+        foreach ($selected_dir as $dir => $dir_node) {
             $dir_x++;
-            ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a><br><?php   
+            if(gettype($dir_node)=='array') { // TODO: add detection of folder here, we may don't like to display files.
+            ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir; ?></a><br><?php   
             } else {
                 ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a><br><?php   
             }
