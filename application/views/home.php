@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+   <link type="text/css" href="<?php echo base_url(); ?>/css/main.css" rel="stylesheet" media="screen" />
     <title>Home</title>
 </head>
-<body>    
+<body>
+   hello world
     <?php
         echo "<h3>". str_replace('\\', ' > ', str_replace('c:\xampp\htdocs', 'web_root', $this->session->userdata('current_path'))) . "</h3>";
         if ($this->session->userdata('path_is_root')==FALSE) {
@@ -13,11 +15,11 @@
         foreach ($selected_dir as $dir => $dir_node) {
             $dir_x++;
             if(gettype($dir_node)=='array') {
-            ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir; ?></a><br><?php   
+            ?><div class="folder"><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir; ?></a></div><?php   
             } else {
-                ?><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a><br><?php   
+                ?><div class="file"><a href="<?php echo base_url() . "ctrl/enter/" . $dir_x; ?>"><?php echo $dir_node; ?></a></div><?php   
             }
-        }        
+        }
     ?>
     <hr>
     <a href="<?php echo base_url(); ?>ctrl/compress">Compress</a>
