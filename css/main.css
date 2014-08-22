@@ -1,9 +1,46 @@
 body {
-    background-color: #eeeecc;
-    font-size: 15px;
-    color: red;
+    margin: 50 50 50 50;
+    font-size: 10pt;
+    font-family:sans-serif;
 }
 
+
 .folder {
-     font-size: 18px; 
+    background-image: url(images/folder.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+.folder a {
+     color: #000000;
+    text-decoration: none;
+}
+
+.folder a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.file {
+    background-image: url(images/file.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+.file a {
+     color: #000000;
+    text-decoration: none;
+}
+
+.file a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.itemsDisplay {
+     border: solid gray;   
+    border-width: 1;
+    padding: 10 10 10 10;
+    height: 400px;
+    overflow: scroll;
 }

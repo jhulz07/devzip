@@ -13,7 +13,6 @@ class Ctrl extends CI_Controller {
     }
     
     function Index() {
-        echo $this->foldersTreatedAs;
         $this->session->set_userdata('current_path', $this->root_folder);
         $data['selected_dir'] = directory_map($this->session->userdata('current_path'), $this->foldersTreatedAs); 
         $this->session->set_userdata('path_is_root', TRUE);

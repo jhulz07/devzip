@@ -5,9 +5,12 @@
     <title>Home</title>
 </head>
 <body>
-   hello world
+   
     <?php
         echo "<h3>". str_replace('\\', ' > ', str_replace('c:\xampp\htdocs', 'web_root', $this->session->userdata('current_path'))) . "</h3>";
+    ?>
+    <div class="itemsDisplay">
+    <?php
         if ($this->session->userdata('path_is_root')==FALSE) {
         ?><a href="<?php echo base_url(); ?>">.\ web_root</a><br><a href="<?php echo base_url(); ?>ctrl/up">.. up one level</a><br><br><?php
         } 
@@ -21,6 +24,7 @@
             }
         }
     ?>
+    </div>   
     <hr>
     <a href="<?php echo base_url(); ?>ctrl/compress">Compress</a>
 </body>
