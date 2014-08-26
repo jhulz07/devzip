@@ -11,6 +11,29 @@ class Ctrl extends CI_Controller {
         $this->foldersTreatedAs = 2; // 1 for no; 2 for yes; this allows us to detect whether an item is a file or a folder with sub-items
         
     }
+
+    private function dir_map_sort($array)
+    {
+        $dirs = array();
+        $files = array();
+
+        foreach ($array as $key => $val)
+        {
+            if (is_array($val))
+            {
+                $dirs[$key] = (!empty($array)) ? $this->dir_map_sort($val) : $val;
+            }
+            else
+            {
+                $files[$key] = $val;
+            }
+        }
+
+        ksort($dirs);
+        asort($files);
+
+        return array_merge($dirs, $files); 
+    }
     
     function Index() {
         $this->session->set_userdata('current_path', $this->root_folder);

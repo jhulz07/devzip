@@ -4,3 +4,19 @@
 - CSS: icons depending on file type or if it is a folder.
 - CSS: add hover effects
 - OS: create a script that will accept a path parameter then do a zip operation based on path supplied by the PHP call.
+
+VERSION 1.0:
+    Contains basic folder and file browser. It executes a command from the server to execute ZIP or UNZIP. htdocs login also will be added
+
+VERSION 2.0:
+    May contain a treeview of the directory structure but if there would be a problem we will just do that on VERSION 3.0
+    This version will contain a richer file browsing experience. Asside from the directory names and files the details such as
+        created date, modified date, and size are also displayed. To achieve this, we will not rely on the array index number 
+        captured from the directory_map() function. We will try to loop into the entries and try to extract meta data using other
+        directory and file helpers. Those data are inserted into our own multi-dimentional array. This will allow us to have
+        further control and open new possibilities. This will also include previous version bugs.
+
+VERSION 3.0
+    The treeview must be included in this version. Asside from treeview we will try to execute other commands such as copying, moving,
+        and renaming files and folders. We will also integrate richer user interface. We will integrate session based login instead of 
+        htdocs.

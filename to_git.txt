@@ -1,0 +1,5 @@
+- attempted to sort folders and files with the following
+    - sort function dir_map_sort in ctrl.php
+        - yes it sorts the items according to type but we are having troubles tracing their original index numbers resulting to incorrect browsing
+    - using javascript to dynamically append folders and files into their corresponding div containters.
+        - yes we sorted out but still I can't trace the problem. the index is correct in files but not in folders.
